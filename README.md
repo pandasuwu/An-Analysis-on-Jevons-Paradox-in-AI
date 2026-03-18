@@ -1,8 +1,6 @@
-# The Jevons Paradox in AI — Interactive Data Report
+# The Jevons Paradox in AI
 
 An empirical, data-driven investigation into whether AI hardware efficiency gains are offset by explosive demand growth. All three hypotheses confirmed.
-
-**Live demo:** Deploy via GitHub Pages (see instructions below)
 
 ---
 
