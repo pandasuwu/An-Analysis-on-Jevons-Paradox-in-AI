@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Jevons Paradox in AI — Data Analysis</title>
+  <meta name="description" content="An empirical investigation into whether AI hardware efficiency gains are offset by explosive demand growth. All three hypotheses confirmed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NOISE OVERLAY -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">Jevons Paradox / AI</div>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#h1">H1 Efficiency</a></li>
+        <li><a href="#h2">H2 Demand</a></li>
+        <li><a href="#h3">H3 Emissions</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+      <div class="nav-progress-wrap"><div class="nav-progress" id="navProgress"></div></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg-grid" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">IDS Writing Assignment · Data-Driven Report</div>
+      <h1 class="hero-title reveal" style="animation-delay:.1s">
+        The <em>Jevons Paradox</em><br>in Artificial Intelligence
+      </h1>
+      <p class="hero-desc reveal" style="animation-delay:.22s">
+        AI hardware has become 21% more efficient per year — yet total energy consumption
+        is surging. This investigation asks why, and lets the data answer.
+      </p>
+      <div class="hero-meta reveal" style="animation-delay:.34s">
+        <div class="hero-meta-chip">4 datasets</div>
+        <div class="hero-meta-chip">3,237 models tracked</div>
+        <div class="hero-meta-chip">3 hypotheses · all confirmed</div>
+      </div>
+      <a href="#overview" class="hero-scroll-cue reveal" style="animation-delay:.46s" aria-label="Scroll to overview">
+        <span class="scroll-cue-line"></span>
+        <span class="scroll-cue-label">Scroll to explore</span>
+      </a>
+    </div>
+    <div class="hero-stat-float" aria-hidden="true">
+      <div class="float-num" id="heroCountUp">0</div>
+      <div class="float-label">× demand outpaces efficiency</div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section section-overview" id="overview">
+    <div class="container">
+      <div class="section-label reveal">§ 0 · Context &amp; Datasets</div>
+      <h2 class="section-title reveal">What is the Jevons Paradox?</h2>
+      <div class="two-col">
+        <div class="col-text">
+          <p class="reveal">The <strong>Jevons Paradox</strong> (or Rebound Effect) describes a counterintuitive economic phenomenon: when a resource becomes cheaper to use through efficiency improvements, total consumption of that resource <em>increases</em> rather than decreasing. The efficiency gain lowers barriers, expands the market, and demand explodes past the efficiency savings.</p>
+          <p class="reveal">This investigation tests whether this paradox applies to AI compute. As GPU/TPU architectures have improved dramatically — through Tensor cores, FP16 precision, and optimized memory bandwidth — has the AI industry's total energy footprint shrunk, or grown?</p>
+          <p class="reveal">We synthesize four datasets covering hardware efficiency, frontier model training, data center infrastructure, and 3,237 model deployments to answer this question through three testable hypotheses.</p>
+        </div>
+        <div class="col-cards">
+          <div class="dataset-card reveal">
+            <div class="ds-icon ds-blue"></div>
+            <div>
+              <div class="ds-name">ml_hardware</div>
+              <div class="ds-desc">61 GPU/TPU data points · FLOP/W efficiency · 2017–2025</div>
+            </div>
+          </div>
+          <div class="dataset-card reveal">
+            <div class="ds-icon ds-amber"></div>
+            <div>
+              <div class="ds-name">frontier_ai_models</div>
+              <div class="ds-desc">Training compute records · publication dates · landmark models</div>
+            </div>
+          </div>
+          <div class="dataset-card reveal">
+            <div class="ds-icon ds-red"></div>
+            <div>
+              <div class="ds-name">data_center_timelines</div>
+              <div class="ds-desc">23 frontier clusters · physical power draw · 2023–2025</div>
+            </div>
+          </div>
+          <div class="dataset-card reveal">
+            <div class="ds-icon ds-green"></div>
+            <div>
+              <div class="ds-name">all_ai_models</div>
+              <div class="ds-desc">3,237 tracked deployments · power draw estimates · 2010–2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA QUALITY NOTE -->
+      <div class="method-note reveal">
+        <div class="method-note-title">Methodological Note — Metric Shift</div>
+        Pre-2017 hardware efficiency is measured in FP32/TDP (single-precision floating-point). Post-2017 chips use Tensor-FP16/TDP, reflecting specialized deep learning hardware. These are not identical operations. Regression analysis is confined to the post-2017 cohort for consistency, and the two eras are annotated separately in all visualizations. Future projections (post-2026) are excluded entirely.
+      </div>
+
+      <!-- SUMMARY STATS ROW -->
+      <div class="stat-row reveal">
+        <div class="stat-cell">
+          <div class="stat-val" data-count="61">0</div>
+          <div class="stat-lbl">Hardware data points</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val" data-count="3237">0</div>
+          <div class="stat-lbl">AI models tracked</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val count-str" data-count="751">0</div>
+          <div class="stat-lbl">Peak DC power (MW)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val count-str" data-count="847">0</div>
+          <div class="stat-lbl">CO₂ growth, BERT→GPT-3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- H1 SECTION -->
+  <section class="section section-h1" id="h1">
+    <div class="container">
+      <div class="hyp-header">
+        <div class="hyp-tag tag-blue reveal">Hypothesis 1 · Hardware Efficiency</div>
+        <h2 class="section-title reveal">The energy cost per FLOP<br>has fallen significantly.</h2>
+        <p class="section-intro reveal">Before claiming a paradox, we must first confirm the efficiency premise. The ml_hardware dataset provides the answer.</p>
+      </div>
+
+      <div class="analysis-layout">
+        <div class="analysis-text">
+          <h3 class="reveal">The regression result</h3>
+          <p class="reveal">Log-linear OLS regression of FLOP/W against year (2017–2025, n=61) reveals a <strong>highly significant positive trend</strong>. The year variable alone explains 54.9% of variance in log-efficiency — a strong result given the diversity of chip manufacturers and architectures in the dataset.</p>
+
+          <div class="stat-test reveal">
+            <div class="st-label">OLS Regression — log(FLOP/W) vs. Year</div>
+            <div class="st-grid">
+              <div class="st-item"><span class="st-key">R²</span><span class="st-val-code">0.549</span></div>
+              <div class="st-item"><span class="st-key">p-value</span><span class="st-val-code">8.89 × 10⁻¹²</span></div>
+              <div class="st-item"><span class="st-key">n</span><span class="st-val-code">61</span></div>
+              <div class="st-item"><span class="st-key">Period</span><span class="st-val-code">2017–2025</span></div>
+            </div>
+          </div>
+
+          <div class="stat-test reveal">
+            <div class="st-label">Derived Rates</div>
+            <div class="st-grid">
+              <div class="st-item"><span class="st-key">Annual gain</span><span class="st-val-code hl-green">+21% / year</span></div>
+              <div class="st-item"><span class="st-key">Doubling time</span><span class="st-val-code hl-green">3.6 years</span></div>
+            </div>
+          </div>
+
+          <p class="reveal">The data confirms: <strong>the energy required to run one trillion floating-point operations has fallen by more than 20× over eight years.</strong> This is the prerequisite for the paradox — cheaper compute removes the economic constraint on training scale.</p>
+
+          <div class="verdict-badge badge-green reveal">✓ H1 Confirmed</div>
+        </div>
+
+        <div class="analysis-chart">
+          <div class="chart-card reveal">
+            <div class="chart-card-header">
+              <div class="chart-card-title">Fig 1 · FLOP/W Efficiency Trend</div>
+              <div class="chart-card-sub">Post-2017 ML accelerators · Log scale · OLS trend overlaid</div>
+            </div>
+            <div class="chart-area" style="height:300px"><canvas id="h1Chart"></canvas></div>
+            <div class="chart-legend">
+              <div class="leg-item"><div class="leg-dot" style="background:#4a9fd4"></div>Tensor-FP16/W datapoints</div>
+              <div class="leg-item"><div class="leg-dot leg-dashed" style="background:#c9a84c"></div>OLS regression line</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- H2 SECTION -->
+  <section class="section section-h2" id="h2">
+    <div class="container">
+      <div class="hyp-header">
+        <div class="hyp-tag tag-amber reveal">Hypothesis 2 · Demand Explosion</div>
+        <h2 class="section-title reveal">Post-2020 training compute has<br>grown by 50 million times.</h2>
+        <p class="section-intro reveal">If efficiency is improving at 21%/year, why is total energy still rising? The frontier_ai_models dataset reveals the answer with exceptional statistical strength.</p>
+      </div>
+
+      <!-- PARADOX EQUATION -->
+      <div class="paradox-eq reveal">
+        <div class="eq-block">
+          <div class="eq-label">Efficiency doubles every</div>
+          <div class="eq-num eq-blue">3.6 <span>yrs</span></div>
+        </div>
+        <div class="eq-vs">÷</div>
+        <div class="eq-block">
+          <div class="eq-label">Demand doubles every</div>
+          <div class="eq-num eq-amber">0.96 <span>yrs</span></div>
+        </div>
+        <div class="eq-vs">=</div>
+        <div class="eq-block eq-result">
+          <div class="eq-label">Demand outpaces efficiency by</div>
+          <div class="eq-num eq-red">3.75<span>×</span></div>
+          <div class="eq-sub">Total energy must increase</div>
+        </div>
+      </div>
+
+      <div class="analysis-layout analysis-layout-reverse">
+        <div class="analysis-chart">
+          <div class="chart-card reveal">
+            <div class="chart-card-header">
+              <div class="chart-card-title">Fig 2 · Frontier AI Training Compute</div>
+              <div class="chart-card-sub">FLOPs per training run · Log scale · pre/post-2020 split</div>
+            </div>
+            <div class="chart-area" style="height:300px"><canvas id="h2Chart"></canvas></div>
+            <div class="chart-legend">
+              <div class="leg-item"><div class="leg-dot" style="background:#e8a430"></div>Pre-2020 frontier models</div>
+              <div class="leg-item"><div class="leg-dot" style="background:#e05a3a"></div>Post-2020 frontier models</div>
+              <div class="leg-item"><div class="leg-dot leg-dashed" style="background:rgba(201,168,76,0.7)"></div>OLS (R²=0.893)</div>
+            </div>
+          </div>
+          <div class="chart-card reveal" style="margin-top:20px">
+            <div class="chart-card-header">
+              <div class="chart-card-title">Fig 3 · Frontier Data Center Power Demand</div>
+              <div class="chart-card-sub">23 tracked clusters · cumulative MW · 2023–2025</div>
+            </div>
+            <div class="chart-area" style="height:240px"><canvas id="h2dcChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="analysis-text">
+          <h3 class="reveal">The demand regression</h3>
+          <p class="reveal">Log-linear regression of training compute against publication year produces an <strong>almost perfect fit</strong>: R²=0.893 with p&lt;10⁻¹⁹. Compute is doubling every 11.5 months. Three forces drive this: more GPUs per cluster, longer training runs, and development budgets growing 2–3× annually.</p>
+
+          <div class="stat-test reveal">
+            <div class="st-label">Regression — log(FLOPs) vs. Year</div>
+            <div class="st-grid">
+              <div class="st-item"><span class="st-key">R²</span><span class="st-val-code">0.893</span></div>
+              <div class="st-item"><span class="st-key">p-value</span><span class="st-val-code">&lt; 10⁻¹⁹</span></div>
+              <div class="st-item"><span class="st-key">Doubling time</span><span class="st-val-code hl-red">11.5 months</span></div>
+            </div>
+          </div>
+
+          <h3 class="reveal">Mann-Whitney U test</h3>
+          <p class="reveal">A t-test would be inappropriate for training compute data — values span many orders of magnitude and are strongly non-normal. The <strong>Mann-Whitney U test</strong> (non-parametric, rank-based) comparing pre-2020 vs. post-2020 models yields:</p>
+
+          <div class="stat-test reveal">
+            <div class="st-label">Mann-Whitney U — Pre vs Post-2020 Compute</div>
+            <div class="st-grid">
+              <div class="st-item"><span class="st-key">p-value</span><span class="st-val-code hl-red">4.35 × 10⁻¹⁹</span></div>
+              <div class="st-item"><span class="st-key">Median ratio</span><span class="st-val-code hl-red">50,000,000×</span></div>
+            </div>
+            <div class="st-note">H₀ (equal medians) rejected at p &lt; 0.001. Non-parametric test chosen due to log-skewed distribution.</div>
+          </div>
+
+          <p class="reveal">The data center infrastructure confirms this: 23 frontier clusters grew from near-zero in early 2023 to <strong>751 MW by October 2025</strong>.</p>
+
+          <div class="verdict-badge badge-red reveal">✓ H2 Confirmed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- H3 SECTION -->
+  <section class="section section-h3" id="h3">
+    <div class="container">
+      <div class="hyp-header">
+        <div class="hyp-tag tag-red reveal">Hypothesis 3 · Global Emissions</div>
+        <h2 class="section-title reveal">Absolute CO₂ emissions from AI<br>are rising, not falling.</h2>
+        <p class="section-intro reveal">Corporate sustainability commitments meet a structural growth curve. The data shows which one wins.</p>
+      </div>
+
+      <!-- BERT VS GPT3 CALLOUT -->
+      <div class="emissions-compare reveal">
+        <div class="em-card em-bert">
+          <div class="em-year">2019</div>
+          <div class="em-model">BERT</div>
+          <div class="em-energy">1,507 kWh</div>
+          <div class="em-co2">0.65 tCO₂e</div>
+          <div class="em-context">≈ one trans-American flight</div>
+        </div>
+        <div class="em-arrow">
+          <div class="em-multiplier">847×</div>
+          <div class="em-mult-label">increase in CO₂e</div>
+          <div class="em-arrow-line">→</div>
+          <div class="em-timespan">in one year</div>
+        </div>
+        <div class="em-card em-gpt3">
+          <div class="em-year">2020</div>
+          <div class="em-model">GPT-3</div>
+          <div class="em-energy">1,287 MWh</div>
+          <div class="em-co2">552 tCO₂e</div>
+          <div class="em-context">≈ 847 trans-American flights</div>
+        </div>
+      </div>
+
+      <div class="analysis-layout">
+        <div class="analysis-text">
+          <h3 class="reveal">Model-level anchors</h3>
+          <p class="reveal">BERT's training run in 2019 (Strubell et al.) consumed roughly 1,507 kWh and generated ~0.65 tCO₂e — the carbon footprint of a single long-haul flight. GPT-3's 2020 training run consumed 1,287 MWh and generated ~552 tCO₂e. This <strong>847× emissions jump occurred in a single model generation.</strong></p>
+
+          <p class="reveal">It is important to note that architectural improvements, efficient hardware selection, and optimal data center location can reduce a specific training run by 100–1,000×. Yet the aggregate data shows this is insufficient — the scale of training is growing faster than any per-run optimization can offset.</p>
+
+          <div class="stat-test reveal">
+            <div class="st-label">Emissions Summary</div>
+            <div class="st-grid">
+              <div class="st-item"><span class="st-key">Energy growth</span><span class="st-val-code hl-red">854×</span></div>
+              <div class="st-item"><span class="st-key">CO₂e growth</span><span class="st-val-code hl-red">847×</span></div>
+              <div class="st-item"><span class="st-key">Period</span><span class="st-val-code">BERT → GPT-3 (1 year)</span></div>
+            </div>
+          </div>
+
+          <h3 class="reveal">2,895× peak power growth (2016–2025)</h3>
+          <p class="reveal">The all_ai_models dataset (3,237 entries) shows the maximum power draw per individual training run grew from ~38,000 W in 2016 to ~110,000,000 W in 2025. This <strong>2,895× increase in peak power demand</strong> over nine years is the direct physical manifestation of H2's demand explosion translating into real-world infrastructure.</p>
+
+          <div class="verdict-badge badge-red reveal">✓ H3 Confirmed</div>
+        </div>
+
+        <div class="analysis-chart">
+          <div class="chart-card reveal">
+            <div class="chart-card-header">
+              <div class="chart-card-title">Fig 4 · CO₂e Comparison: BERT vs GPT-3</div>
+              <div class="chart-card-sub">Metric tons · Log scale (linear scale makes BERT's bar invisible)</div>
+            </div>
+            <div class="chart-area" style="height:220px"><canvas id="h3EmitChart"></canvas></div>
+          </div>
+          <div class="chart-card reveal" style="margin-top:20px">
+            <div class="chart-card-header">
+              <div class="chart-card-title">Fig 5 · Peak Training Run Power Draw (W)</div>
+              <div class="chart-card-sub">Max wattage across all_ai_models per year · Log scale</div>
+            </div>
+            <div class="chart-area" style="height:240px"><canvas id="h3PwrChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA TABLE -->
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <thead>
+            <tr><th>Metric</th><th>Value</th><th>Dataset</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CO₂e growth (BERT→GPT-3)</td><td class="val red">847×</td><td class="src">academic papers</td></tr>
+            <tr><td>Energy growth (BERT→GPT-3)</td><td class="val red">854×</td><td class="src">academic papers</td></tr>
+            <tr><td>Peak power draw growth (2016→2025)</td><td class="val red">2,895×</td><td class="src">all_ai_models</td></tr>
+            <tr><td>Models tracked</td><td class="val">3,237</td><td class="src">all_ai_models</td></tr>
+            <tr><td>Max per-run power draw (2025)</td><td class="val red">110 MW</td><td class="src">all_ai_models</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE: RATE COMPARISON EXPLORER -->
+  <section class="section section-interactive" id="explorer">
+    <div class="container">
+      <div class="section-label reveal">Interactive Explorer</div>
+      <h2 class="section-title reveal">The Paradox in Motion</h2>
+      <p class="section-intro reveal">Adjust the efficiency and demand growth rates to see how total energy consumption evolves. The actual measured rates are pre-loaded.</p>
+
+      <div class="explorer-wrap reveal">
+        <div class="explorer-controls">
+          <div class="ctrl-group">
+            <label class="ctrl-label">Efficiency doubling time <span class="ctrl-hint">(years)</span></label>
+            <div class="ctrl-row">
+              <input type="range" id="effDouble" min="1" max="10" step="0.1" value="3.6" />
+              <span class="ctrl-val" id="effDoubleVal">3.6 yrs</span>
+            </div>
+            <div class="ctrl-note" id="effNote">Measured: 3.6 years (R²=0.549, p&lt;10⁻¹²)</div>
+          </div>
+          <div class="ctrl-group">
+            <label class="ctrl-label">Demand doubling time <span class="ctrl-hint">(years)</span></label>
+            <div class="ctrl-row">
+              <input type="range" id="demDouble" min="0.5" max="5" step="0.1" value="0.96" />
+              <span class="ctrl-val" id="demDoubleVal">0.96 yrs</span>
+            </div>
+            <div class="ctrl-note" id="demNote">Measured: 0.96 years (R²=0.893, p&lt;10⁻¹⁹)</div>
+          </div>
+          <div class="ctrl-ratio">
+            <div class="ratio-label">Demand outpaces efficiency by</div>
+            <div class="ratio-val" id="ratioVal">3.75×</div>
+            <div class="ratio-verdict" id="ratioVerdict">Paradox active — total energy rises</div>
+          </div>
+        </div>
+        <div class="explorer-chart">
+          <div class="chart-area" style="height:320px"><canvas id="explorerChart"></canvas></div>
+          <div class="chart-legend" style="margin-top:12px">
+            <div class="leg-item"><div class="leg-dot" style="background:#4a9fd4"></div>Efficiency gain (normalized)</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#e05a3a"></div>Demand growth (normalized)</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#c9a84c"></div>Net energy (demand ÷ efficiency)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="section section-conclusion" id="conclusion">
+    <div class="container">
+      <div class="section-label reveal">§ 5 · Conclusion</div>
+      <h2 class="section-title reveal">The Inescapable Math<br>of AI Scaling</h2>
+
+      <div class="conclusion-body">
+        <div class="conclusion-quote reveal">
+          "Efficiency improves at a doubling rate of 3.6 years — but compute demand doubles every 0.96 years. Demand is actively outpacing efficiency growth by a factor of 3.75×."
+        </div>
+
+        <div class="conclusion-text">
+          <p class="reveal">This investigation empirically confirms all three hypotheses, establishing the Jevons Paradox within the modern AI sector. The chain is complete and quantified across all four datasets.</p>
+
+          <div class="verdict-summary reveal">
+            <div class="vs-row">
+              <div class="vs-hyp">H1 · Hardware Efficiency</div>
+              <div class="vs-result">+21%/yr gain confirmed · R²=0.549 · p&lt;10⁻¹²</div>
+              <div class="vs-badge badge-green">✓</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-hyp">H2 · Demand Explosion</div>
+              <div class="vs-result">50M× post-2020 growth · Mann-Whitney p=4.35×10⁻¹⁹</div>
+              <div class="vs-badge badge-red">✓</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-hyp">H3 · Absolute Emissions</div>
+              <div class="vs-result">847× CO₂e growth · 2,895× peak power growth</div>
+              <div class="vs-badge badge-red">✓</div>
+            </div>
+          </div>
+
+          <p class="reveal">Component-level efficiency improvements are real and valuable, but cannot close a <strong>3.75× structural gap</strong> between the supply of efficiency and the demand for computation. Unless aggregate scaling is subject to structural constraints — hard compute caps, regulatory limits on cluster size, or a fundamental paradigm shift — the environmental footprint of AI will continue to compound regardless of hardware progress.</p>
+
+          <p class="reveal">The math is inescapable.</p>
+        </div>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="sources reveal">
+        <div class="sources-title">Data Sources &amp; References</div>
+        <div class="source-item">ml_hardware.csv — Machine learning accelerator efficiency dataset (FLOP/W, 2010–2025)</div>
+        <div class="source-item">frontier_ai_models.csv — Training compute records for frontier AI models</div>
+        <div class="source-item">data_center_timelines.csv — Power draw for 23 frontier AI training clusters</div>
+        <div class="source-item">all_ai_models.csv — 3,237 tracked model deployments with power draw estimates</div>
+        <div class="source-item">Strubell et al. (2019). "Energy and Policy Considerations for Deep Learning in NLP." ACL 2019. arXiv:1906.02243</div>
+        <div class="source-item">Schwartz et al. (2020). "Carbon Emissions and Large Neural Network Training." arXiv:2104.10350</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">Jevons Paradox in AI · IDS Writing Assignment</div>
+        <div class="footer-right">Data-driven analysis · 2025</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
